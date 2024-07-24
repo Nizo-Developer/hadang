@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hadang</title>
+  <link rel="stylesheet" href="scoring.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="home">
+        <img src="../.svg/arrow-left.svg" alt="" height="20">
+        <a href="../"></a>
+      </div>
+      <div class="code">#XXXXXX</div>
+    </nav>
+    <main>
+      <section>
+        <div class="content">
+          <div class="top">
+            <div class="header">No</div>
+            <div class="header">Score</div>
+            <div class="team">SMKN4</div>
+          </div>
+          <div class="score">
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+          </div>
+          <div class="total">
+            <div class="title">Total:</div>
+            <div id="total">00</div>
+          </div>
+        </div>  
+      </section>
+      <section>
+        <div class="content">
+          <div class="top">
+            <div class="header">No</div>
+            <div class="header">Score</div>
+            <div class="team">SMKN4</div>
+          </div>
+          <div class="score">
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+            <div class="player">
+              <div id="no">00</div>
+              <div id="score"><span>0</span></div>
+              <div id="add">+</div>
+            </div>
+          </div>
+          <div class="total">
+            <div class="title">Total:</div>
+            <div id="total">00</div>
+          </div>
+        </div>  
+      </section>
+    </main>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    responsive()
+  })
+
+  window.addEventListener('resize', responsive)
+
+  function responsive() {
+    const base = document.getElementById('no').getBoundingClientRect().left;
+    const item1 = document.querySelector('.score').children[0].querySelector('#score span').getBoundingClientRect().left;
+    const item2 = document.getElementById('total').getBoundingClientRect().left;
+    const item3 = document.querySelector('.title').getBoundingClientRect().left;
+
+    const total = document.querySelectorAll('.total');
+    console.log(base, item1, item2, item3)
+    const side = item1 - 135
+
+    total.forEach(elemen => {
+      console.log(side)
+      elemen.style.left = side + 'px'
+    })
+  }
+  </script>
+</body>
+</html>

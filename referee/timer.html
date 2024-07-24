@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hadang</title>
+  <link rel="stylesheet" href="timer.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="home">
+        <img src="../.svg/arrow-left.svg" alt="" height="20">
+        <a href="../"></a>
+      </div>
+      <div class="code">#XXXXXX</div>
+    </nav>
+    <main>
+      <div class="shadowBehind"></div>
+      <section>
+        <div class="main-timer">
+          <div class="time">
+            15 : 00
+          </div>
+          <div class="button-wrap">
+            <div class="dec decl"></div>
+            <div class="button">
+              <p>START</p>
+              <div></div>
+            </div>
+            <div class="dec decr"></div>
+          </div>
+        </div>
+        <div class="lock-timer">
+          <div class="time">
+            01 : 00
+          </div>
+          <div class="button">
+            <p>START</p>
+            <div></div>
+          </div>
+        </div>
+        <div class="detail">
+          <p>- Detail -</p>
+          <div class="detail-wrapper">
+            <div class="detail-team">
+              <div class="team">SMKN4</div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+            </div>
+            <div class="detail-team">
+              <div class="team">SMKN4</div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+              <div class="player">
+                <div id="no">00</div>
+                <div id="score"><span>0</span></div>
+                <div class="blank">00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const mainTime = document.querySelector('.main-timer .time');
+    const btnWrap = document.querySelector('.button-wrap');
+    const button = btnWrap.querySelector('.button');
+    const dec1 = document.querySelectorAll('.dec')
+    const btn1 = button.querySelector('div');
+    const btn2 = button.querySelector('p');
+
+    const lockTime = document.querySelector('.lock-timer .time');
+    const lockBtn = document.querySelector('.lock-timer .button');
+    const lock1 = lockBtn.querySelector('div');
+    const lock2 = lockBtn.querySelector('p');
+
+    const shadow = document.querySelector('.shadowBehind')
+    const detail = document.querySelector('.detail');
+    const detailBtn = document.querySelector('.detail p');
+
+    let time1;
+    let time2;
+    let gDown = 0;
+    let gUp = 0;
+    let timeMain = 899;
+    let timeLock = 59;
+    
+    document.addEventListener('DOMContentLoaded', () => {
+
+      button.addEventListener('click', mainTimer1);
+      lockBtn.addEventListener('click', lockTimer2);
+      detailBtn.addEventListener('click', detail2);
+      // document.addEventListener('mouseup', () => {
+      //   lockTimer3(1);
+      // })
+
+    })
+    
+    function mainTimer1() {
+      if (btn2.innerText == 'START') {
+        button.style.borderRadius = '1000px';
+        button.style.height = '360px';
+        button.style.width = '360px';
+        btn1.style.height = '250px';
+        btn1.style.width = '250px';
+        btn2.style.transitionDelay = '0.2s';
+        btn2.style.transform = 'translateY(-130%)';
+        btn2.style.fontSize = '36px';
+        btnWrap.style.bottom = '-100%';
+        dec1.forEach(dec => {
+          dec.style.width = 0;
+        })
+        btn2.style.color = 'transparent';
+        setTimeout(() => {
+          btnWrap.style.bottom = 'unset';
+          btnWrap.style.top = '100vh';
+          mainTimer2();
+        }, 200)
+      } else {
+        button.style.height = '160px';
+        button.style.width = '160px';
+        btn1.style.height = '80px';
+        btn1.style.width = '80px';
+        btn1.style.borderWidth = '5px';
+        btn2.style.fontSize = '20px';
+        setTimeout(() => {
+          mainTimer2()
+        }, 100)
+      }
+    }
+
+    function mainTimer2() {
+      if (btn2.innerText == 'START') {
+        mainTime.style.fontSize = '38px';
+        button.style.height = '160px';
+        button.style.width = '160px';
+        btn1.style.height = '100px';
+        btn1.style.width = '100px';
+        btn1.style.borderWidth = '5px';
+        btn2.style.fontSize = '20px';
+        btn2.style.transform = 'translate(0)'
+        setTimeout(() => {
+          btn1.style.borderColor = 'red';
+          btnWrap.style.bottom = 'unset';
+          btnWrap.style.top = '140px';
+          btn2.innerHTML = 'PAUSE';
+          btn2.style.color = 'white';
+          mainTime.style.top = '80px';
+          
+          setTimeout(() => {
+            button.style.height = '220px';
+            button.style.width = '220px';
+            btn1.style.height = '150px';
+            btn1.style.width = '150px';
+            btn1.style.borderWidth = '8px';
+            btn2.style.fontSize = '36px';
+
+            lockTimer1(1);
+            detail1()
+            startMain();
+          }, 300)
+        }, 100);
+      } else {
+        detail3()
+        lockTimer3(2)
+        lockTimer1(2)
+        btnWrap.style.top = '100vh';
+        btn1.style.borderColor = '#70E575'
+        btn2.style.opacity = '0';
+        mainTime.removeAttribute('style')
+        mainTime.style.opacity = '0';
+        clearInterval(time1)
+        setTimeout(() => {
+          mainTime.innerHTML = '15 : 00'
+          mainTime.style.opacity = '1';
+          timeMain = 899;
+        }, 100)
+        setTimeout(() => {
+          dec1.forEach(dec => {
+            dec.removeAttribute('style');
+          })
+          btn2.innerHTML = 'START';
+          btn2.style.opacity = '1';
+          btnWrap.removeAttribute('style')
+          button.removeAttribute('style')
+          btn1.removeAttribute('style')
+          btn2.removeAttribute('style')
+        }, 400)
+
+      }
+    }
+
+    function lockTimer1(type) {
+      if (type == 1) {
+        lockTime.style.top = '330px';
+        lockTime.style.fontSize = '25px';
+        lockBtn.style.height = '120px'
+        lockBtn.style.width = '120px'
+        lock1.style.height = '70px'
+        lock1.style.width = '70px'
+        lock2.style.fontSize = '16px'
+        setTimeout(() => {
+          lockBtn.style.top = '340px';
+  
+          setTimeout(() => {
+            lockBtn.style.height = '150px'
+            lockBtn.style.width = '150px'
+            lock1.style.height = '100px'
+            lock1.style.width = '100px'
+            lock2.style.fontSize = '20px'
+          }, 200)
+        }, 100)
+      } else {
+        lockTime.removeAttribute('style');
+        lockBtn.removeAttribute('style');
+      }
+    }
+
+    function lockTimer2() {
+      lockBtn.style.top = '360px'
+      lockBtn.style.height = '120px'
+      lockBtn.style.width = '120px'
+      lock1.style.height = '70px'
+      lock1.style.width = '70px'
+      // lockBtn.addEventListener('mouseup', () => {
+      setTimeout(() => {
+        lockTimer3()
+      }, 200)
+      // });
+    }
+
+    function lockTimer3(type) {
+      console.log(type)
+      lockBtn.style.top = '340px'
+      lockBtn.style.height = '150px'
+      lockBtn.style.width = '150px'
+      lock1.style.height = '100px'
+      lock1.style.width = '100px'
+      
+      if (lock2.innerText == 'START' && !type) {
+        
+        lock1.style.borderColor = 'red';
+        lock2.style.opacity = '0';
+        
+        setTimeout(() => {
+          lock2.innerHTML = 'STOP';
+          lock2.style.opacity = '1';
+          startLock();
+        }, 300)
+      } else if (!type || type == 2) {
+        clearInterval(time2)
+        timeLock = 59
+        lock1.style.borderColor = '#70E575';
+        lock2.style.opacity = '0';
+        lockTime.style.opacity = '0';
+        setTimeout(() => {
+          lock2.innerHTML = 'START';
+          lockTime.innerHTML = '01 : 00'
+          lock2.style.opacity = '1';
+          lockTime.style.opacity = '1';
+          setTimeout(() => {
+            clearInterval(time2)
+          }, 1000)
+        }, 300)
+      }
+    }
+
+    function detail1() {
+      detail.style.top = '92vh';
+    }
+
+    function detail2() {
+      if (detail.style.top != 'unset') {
+        shadow.style.pointerEvents = 'all';
+        detail.style.top = '100vh';
+        detail.style.gap = '30px'
+        
+        setTimeout(() => {
+          detail.style.top = 'unset';
+          detail.style.bottom = '-100%';
+          setTimeout(() => {
+            shadow.style.opacity = '0.8';
+            detailBtn.style.color = 'white';
+            detail.style.bottom = '0';
+            detail.style.gap = '0'
+            detail.style.zIndex = '4'
+          }, 100)
+        }, 300)
+      } else {
+        shadow.style.pointerEvents = 'none';
+        detail.style.zIndex = '0'
+        detail.style.bottom = '-100vh';
+        shadow.style.opacity = '0';
+  
+        setTimeout(() => {
+          detail.style.bottom = 'unset'
+          detailBtn.style.color = '#483E3E';
+          detail.style.top = '100vh';
+          setTimeout(() => {
+            detail.style.top = '92vh';
+          }, 100)
+        }, 300)
+      }
+    }
+
+    function detail3() {
+      shadow.removeAttribute('style');
+      detailBtn.style.color = '#483E3E'
+      detail.removeAttribute('style');
+    }
+
+    function startMain() {
+      time1 = setInterval(() => {
+        const count = timer(timeMain)
+
+        mainTime.innerHTML = count;
+        timeMain--
+
+        if (timeMain < 0) {
+          clearInterval(time1)
+          timeMain = 899;
+          mainTimer2()
+        }
+      }, 1000)
+    }
+
+    function startLock() {
+      time2 = setInterval(() => {
+        const count = timer(timeLock)
+
+        lockTime.innerHTML = count;
+        timeLock--
+
+        console.log(timeLock)
+
+        if (timeLock < 0) {
+          clearInterval(time2)
+          timeLock = 59;
+          lockTimer2()
+        }
+      }, 1000)
+    }
+
+    function timer(time) {
+      if (time >= 0) {
+        const minutes = Math.floor(time / 60).toString().padStart(2, '0');
+        const seconds = (time % 60).toString().padStart(2, '0');
+        return `${minutes} : ${seconds}`;
+      } else {
+        return '00 : 00'
+      }
+    }
+  </script>
+</body>
+</html>

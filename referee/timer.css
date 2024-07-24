@@ -1,0 +1,334 @@
+@font-face {
+  font-family: inter;
+  src: url(../.font/static/Inter-Regular.ttf);
+}
+
+* {
+  font-family: inter;
+  color: #483E3E;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  margin-inline: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav * {
+  background-color: #D9D9D9;
+  color: #483E3E;
+  padding: 5px;
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav > * {
+  margin-top: 10px;
+}
+
+.shadowBehind {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  transition: all 0.8s ease;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home {
+  position: relative;
+}
+
+.home a {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+
+.code {
+  padding: 3px 15px;
+}
+
+.main-timer {
+  flex: 1;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.lock-timer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.time {
+  position: absolute;
+  top: 30vh;
+  transition: all 0.3s ease;
+  text-wrap: nowrap;
+}
+
+.main-timer .time {
+  font-size: 16vw;
+}
+.lock-timer .time {
+  font-size: 8vw;
+}
+
+.button-wrap {
+  position: absolute;
+  bottom: -25%;
+  display: flex;
+  gap: -1px;
+  transition: all 0.5s ease;
+}
+
+.button {
+  background-color: #D9D9D9;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button div {
+  background-color: #868686;
+  position: absolute;
+  border-radius: 100%;
+  border: 3vw solid #70E575;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.button div:hover {
+  background-color: #6d6d6d;
+}
+
+.button p {
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  pointer-events: none;
+  user-select: none;
+}
+
+.main-timer .button {
+  height: 140vw;
+  width: 140vw;
+}
+
+.main-timer .button div {
+  height: 105vw;
+  width: 105vw;
+}
+.main-timer .button p {
+  font-size: 14vw;
+  transform: translateY(-140%);
+}
+
+.lock-timer .time {
+  text-wrap: nowrap;
+  position: relative;
+  top: 100vh;
+}
+.lock-timer .button {
+  height: 150px;
+  width: 150px;
+  position: relative;
+  top: 100vh;
+}
+.lock-timer .button div {
+  border-width: 8px;  
+  height: 100px;
+  width: 100px;
+}
+.lock-timer .button p {
+  font-size: 22px;
+}
+
+.dec {
+  width: 0;
+  height: 50px;
+  background-color: #D9D9D9;
+  position: absolute;
+  bottom: 32%;
+  transition: all 0.3s ease;
+}
+
+.dec::after {
+  content: '';
+  display: block;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.decl {
+  right: 100%;
+}
+
+.decl::after {
+  border-bottom-right-radius: 1000px;
+}
+
+.decr {
+  left: 100%;
+}
+
+.decr::after {
+  border-bottom-left-radius: 1000px;
+}
+
+.detail {
+  position: absolute;
+  top: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+.detail p {
+  cursor: pointer;
+}
+
+.detail-wrapper {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-block: 10px 20px;
+  background-color: #D9D9D9;
+  width: 100vw;
+  display: flex;
+}
+
+.detail-team {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  margin-inline: 10px;
+}
+
+.team {
+  padding-block: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.score {
+  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player {
+  background-color: #868686;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  border-radius: 1000px;
+  color: white;
+}
+
+.player * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  border-radius: 1000px;
+  height: fit-content;
+  color: white;
+}
+
+.blank {
+  width: 0;
+  color: transparent;
+}
+
+#no {
+  background-color: #483E3E;
+  width: 0;
+}
+
+#score {
+  padding-inline: 0;
+}
+
+#score span {
+  padding-block: 0;
+}
+
+@media screen and (min-width: 325px) {
+  .main-timer .button {
+    height: 460px;
+    width: 460px;
+  }
+  .main-timer .button div {
+    height: 350px;
+    width: 350px;
+    border-width: 10px;
+  }
+  .main-timer .button p {
+    font-size: 46px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .main-timer .time {
+    top: 20vh;
+  }
+
+  .main-timer .button {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .dec {
+    width: 5vw;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .main-timer .time {
+    font-size: 109px;
+  }
+}
